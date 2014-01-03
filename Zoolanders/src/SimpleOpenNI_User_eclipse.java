@@ -13,7 +13,7 @@ public class SimpleOpenNI_User_eclipse extends PApplet {
 		soni.enableRGB();
 		soni.enableUser();
 		size(soni.depthWidth(), soni.depthHeight());
-		face = loadImage("..\\face.png");
+		face = loadImage("..\\images\\face.png");
 		textSize(20);
 		fill(0,255,0);
 	}

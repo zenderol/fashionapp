@@ -25,7 +25,8 @@ public class SimpleOpenNI_User_eclipse extends PApplet {
 	public void draw() {
 		soni.update();
 		imageMode(CORNER);
-		image(soni.rgbImage(), 0, 0);
+		//image(soni.rgbImage(), 0, 0);
+		image(soni.depthImage(), 0, 0);
 		int[] userIDs = soni.getUsers();
 		for(int i=0; i<userIDs.length; i++){
 			if(soni.isTrackingSkeleton(userIDs[i])){
@@ -42,7 +43,6 @@ public class SimpleOpenNI_User_eclipse extends PApplet {
 				text("head3d: " + head3d, 10, 20);
 				text("head2d: " + head2d, 10, 40);
 				text("d : " + d, 10, 60);
-				
 			}
 		}
 	}

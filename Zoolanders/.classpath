@@ -2,7 +2,16 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="D:/TU Berlin/processing-2.0.3-windows32/processing-2.0.3/core/library/core.jar"/>
-	<classpathentry kind="lib" path="D:/MI/SimpleOpenNI-1.96/SimpleOpenNI/library/SimpleOpenNI.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.0.3/core/library/core.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/F:/dev/processing_javadoc/core/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/olex/Documents/Processing/libraries/SimpleOpenNI/library/SimpleOpenNI.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Users/olex/Documents/Processing/libraries/SimpleOpenNI/documentation/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/olex/Documents/Processing/libraries/SimpleOpenNI/library"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

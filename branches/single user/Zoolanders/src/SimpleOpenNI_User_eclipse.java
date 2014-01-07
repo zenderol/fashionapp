@@ -43,8 +43,8 @@ public class SimpleOpenNI_User_eclipse extends PApplet {
 		
 		
 		if(userIDs.length >0){
-		//clothesAdder.add2DHead(userIDs, "..\\images\\face.png", soni);
-			clothesAdder.add3DShirt(userIDs, "..\\models\\black_tshirt_nike.obj", soni);
+		clothesAdder.add2DHead(userIDs, "..\\images\\face.png", soni);
+			//clothesAdder.add3DShirt(userIDs, "..\\models\\black_tshirt_nike.obj", soni);
 		
 		
 		}

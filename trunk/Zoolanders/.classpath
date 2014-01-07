@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
+	<classpathentry kind="lib" path="C:/Users/olex/Documents/Processing/libraries/SimpleOpenNI/library/SimpleOpenNI.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Users/olex/Documents/Processing/libraries/SimpleOpenNI/documentation/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/olex/Documents/Processing/libraries/SimpleOpenNI/library"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="F:/dev/processing_libraries/OBJLoader/library/OBJLoader.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/F:/dev/processing_libraries/OBJLoader/reference/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="F:/dev/processing_libraries/OBJLoader/library"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/core/library/core.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/F:/dev/processing_javadoc/core/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/core/library/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/core/library/jogl-all.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/modes/java/libraries/video/library/video.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/modes/java/libraries/video/library/gstreamer-java.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/modes/java/libraries/video/library/jna.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

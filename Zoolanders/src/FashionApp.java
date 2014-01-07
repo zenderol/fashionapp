@@ -2,7 +2,7 @@ import SimpleOpenNI.*;
 import processing.core.*;
 
 
-public class SimpleOpenNI_User_eclipse extends PApplet {
+public class FashionApp extends PApplet {
 
 	public SimpleOpenNI  soni;
 	public PImage face;

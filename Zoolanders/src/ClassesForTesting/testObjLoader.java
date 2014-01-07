@@ -1,3 +1,4 @@
+package ClassesForTesting;
 import processing.core.PApplet;
 
 import saito.objloader.*;
@@ -12,7 +13,7 @@ public class testObjLoader extends PApplet {
 	{
 	    size(800, 600, P3D);
 	    frameRate(30);
-	    model = new OBJModel(this, "..\\models\\black_tshirt_nike.obj", "relative", TRIANGLES);
+	    model = new OBJModel(this, "..\\..\\models\\black_tshirt_nike.obj", "absolute", TRIANGLES);
 	    
 	    model.enableMaterial();
 	    model.enableTexture();

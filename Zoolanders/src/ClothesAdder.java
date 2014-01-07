@@ -33,7 +33,7 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 				parent.image(face, head2d.x, head2d.y, d, d);
 
 				// System.out.println("Head added!");
-				// text("head3d: " + head3d, 10, 20);
+				 text("head3d: " + head3d, 10, 20);
 				// text("head2d: " + head2d, 10, 40);
 				// text("d : " + d, 10, 60);
 
@@ -47,42 +47,31 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 		model.translateToCenter();
 		model.scale(5);
 		parent.lights();
-		// model.draw();//added to parent because of OBJModel model = new
-		// OBJModel(parent,...
+
 
 		for (int i = 0; i < userIDs.length; i++) {
 			if (soni.isTrackingSkeleton(userIDs[i])) {
 
-//				PVector userposition = new PVector();
-//				soni.getCoM(userIDs[i], userposition);
-				
 				PVector torso3d = new PVector();
 				PVector torso2d = new PVector();
-				
-				
+
 				float confidence = soni.getJointPositionSkeleton(userIDs[i],
 						SimpleOpenNI.SKEL_TORSO, torso3d);
 				soni.convertRealWorldToProjective(torso3d, torso2d);
 
-		
-				
-
-				//PVector modelrotation = new PVector(userposition.x, userposition.y, userposition.z);
-
-				
+				/* Movement of the 3d Model according to the user */
 				parent.pushMatrix();
 
-				//parent.translate(userposition.x, userposition.y);
+				// parent.translate(userposition.x, userposition.y);
 				parent.translate(torso2d.x, torso2d.y);
-
-//				parent.rotateX(radians(torso3d.x));
-				 parent.rotateY(radians(torso3d.y));
-	          //  parent.rotateZ(radians(torso3d.z));
+				// parent.rotateX(radians(torso3d.x));
+				// parent.rotateY(radians(torso3d.y));
+				// parent.rotateZ(radians(torso3d.z));
 				model.draw();
 
 				parent.popMatrix();
 
-				//parent.text("user position: " + userposition, 10, 20);
+				// parent.text("user position: " + userposition, 10, 20);
 				parent.text("user position: " + torso2d, 10, 20);
 
 			}

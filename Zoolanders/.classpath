@@ -21,5 +21,8 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="F:/dev/processing-2.1/core/library/gluegen-rt.jar"/>
 	<classpathentry kind="lib" path="F:/dev/processing-2.1/core/library/jogl-all.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/modes/java/libraries/video/library/video.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/modes/java/libraries/video/library/gstreamer-java.jar"/>
+	<classpathentry kind="lib" path="F:/dev/processing-2.1/modes/java/libraries/video/library/jna.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -43,10 +43,8 @@ public class FashionApp extends PApplet {
 		
 		
 		if(userIDs.length >0){
-//			clothesAdder.add2DHead(userIDs, "..\\images\\face.png", soni);
+			//clothesAdder.add2DHead(userIDs, "..\\images\\face.png", soni);
 			clothesAdder.add3DShirt(userIDs, "..\\models\\black_tshirt_nike.obj", soni);
-		
-		
 		}
 	}
 }

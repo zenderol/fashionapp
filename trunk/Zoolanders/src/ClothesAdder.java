@@ -71,17 +71,19 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 				// calculate angle y-axis
 				float x_dist = Math.abs(lshoulder3d.x-rshoulder3d.x);
 				float z_dist = lshoulder3d.z-rshoulder3d.z;
-				z_dist *= -1;				
+				float y_dist = lshoulder3d.y-rshoulder3d.y;
+				z_dist *= -1;
 				double angle_y = Math.atan((double) (z_dist/x_dist));
+				double angle_z = Math.atan((double) (y_dist/x_dist));
 
 				/* Movement of the 3d Model according to the user */
 				parent.pushMatrix();
 
 				// parent.translate(userposition.x, userposition.y);
 				parent.translate(torso2d.x, torso2d.y-10);
-				// parent.rotateX(radians(torso3d.x));
+				//parent.rotateZ((float)angle_z);
 				parent.rotateY((float)angle_y);
-				// parent.rotateZ(radians(torso3d.z));
+				// parent.rotateZ(radians(torso3d.x));
 				model.draw();
 
 				parent.popMatrix();

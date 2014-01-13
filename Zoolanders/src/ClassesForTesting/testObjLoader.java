@@ -13,7 +13,7 @@ public class testObjLoader extends PApplet {
 	{
 	    size(800, 600, P3D);
 	    frameRate(30);
-	    model = new OBJModel(this, "..\\..\\models\\black_tshirt_nike.obj", "absolute", TRIANGLES);
+	    model = new OBJModel(this, "..\\..\\models\\Shirts on hangers_only_black.obj", "absolute", TRIANGLES);
 	    
 	    model.enableMaterial();
 	    model.enableTexture();
@@ -21,7 +21,7 @@ public class testObjLoader extends PApplet {
 	    
 	    model.enableDebug();
 
-	    model.scale(20);
+	    model.scale(5);
 	    model.translateToCenter();
 
 	    stroke(255);

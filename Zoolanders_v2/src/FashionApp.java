@@ -75,7 +75,7 @@ public class FashionApp extends PApplet {
 		// set how smooth the hand capturing should be
 		// context.setSmoothingHands(.5);
 
-		stroke(255, 255, 255);
+//		stroke(255, 255, 255);
 		smooth();
 		
 		// create buttons 'containing cloths'
@@ -109,19 +109,16 @@ public class FashionApp extends PApplet {
 		//frameRate(30); // fuer obj loader
 	}
 	
-	public void onNewUser(SimpleOpenNI context, int userId){
-		context.startTrackingSkeleton(userId);
-	}
-	
 	public void draw() {
 		soni.update();
 		background(255);
-//		imageMode(CENTER);
-//		image(soni.rgbImage(), 0, 0);
+//		imageMode(CORNER);
+		image(soni.rgbImage(), 0, 0);
 		//image(soni.depthImage(), 0, 0);
 		int[] userIDs = soni.getUsers();
 		
 		// if user exists
+		noStroke();
 		if(userIDs.length >0){			
 			// change color of buttons to green
 			filled = color(0,255,0);		
@@ -138,18 +135,18 @@ public class FashionApp extends PApplet {
 		} else
 			filled = color(255,0,0); // change color of buttons to red (no user)
 		
+		// draw buttons
+		ui.draw();
+		
 		// draw ellipse around hand
 		if (handsTrackFlag) {
 			soni.convertRealWorldToProjective(handVec, handVec2D);
+			fill(255,255,0);
 			ellipse(640-handVec2D.x, handVec2D.y, 30, 30);
 		}
-		
-		// draw buttons
-		ui.draw();
 	}
-//	
 
-
+/* HAND GESTURES */
 	public void onTrackedHand(SimpleOpenNI curContext, int handId, PVector pos) {
 //		println("onUpdateHandsCb - handId: " + handId + ", pos: " + pos);
 		PVector pos2d = new PVector();
@@ -207,4 +204,17 @@ public class FashionApp extends PApplet {
 		lastGesture = gestureType;
 		soni.endGesture(gestureType);
 	}
+/* HAND GESTURES */
+
+/* USER DETECTION */
+	public void onNewUser(SimpleOpenNI context, int userId){
+		context.startTrackingSkeleton(userId);
+		println("NEW USER: " + userId + "   " + soni.getUsers().length);
+	}	
+	public void onLostUser(SimpleOpenNI context, int userId){
+//		context.stopTrackingSkeleton(userId);
+		println("LOST USER: " + userId + "   " + soni.getUsers().length);
+	}
+/* USER DETECTION */
+	
 }

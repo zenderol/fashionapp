@@ -90,7 +90,7 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 		
 		// ???
 		parent.lights();
-		parent.stroke(0);
+		parent.noStroke();
 
 		for (int i = 0; i < userIDs.length; i++) {
 			if (soni.isTrackingSkeleton(userIDs[i])) {

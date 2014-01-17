@@ -80,7 +80,7 @@ public class FashionApp extends PApplet {
 		smooth();
 		
 		Button a = new Button(0, 0, 100, 100);
-		a.setPath("..\\models\\shirts\\black_t-shirt_nike.obj");
+		a.setPath("..\\models\\shirts\\black_tshirt_nike.obj");
 		a.setType(Button.Type.SHIRT);
 		Button b = new Button(0, 150, 100, 100);
 		b.setPath("..\\models\\shirts\\Polo_shirt_white.obj");

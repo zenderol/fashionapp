@@ -6,6 +6,10 @@ import saito.objloader.*;
 
 public class testObjLoader extends PApplet {
 	OBJModel model ;
+	
+	boolean bTexture = true;
+	boolean bStroke = false;
+	boolean bMaterial = true;
 
 	float rotX, rotY;
 	
@@ -13,7 +17,9 @@ public class testObjLoader extends PApplet {
 	{
 	    size(800, 600, P3D);
 	    frameRate(30);
-	    model = new OBJModel(this, "..\\..\\models\\Shirts on hangers_only_black.obj", "absolute", TRIANGLES);
+	    model = new OBJModel(this, "..\\..\\models\\shirts\\Polo_shirt_white.obj", "relative", POLYGON);
+//	    model = new OBJModel(this, "..\\..\\models\\shirts\\black_tshirt_nike.obj", "absolute", TRIANGLES);
+	    
 	    
 	    model.enableMaterial();
 	    model.enableTexture();
@@ -41,11 +47,9 @@ public class testObjLoader extends PApplet {
 	    popMatrix();
 	}
 
-	boolean bTexture = true;
-	boolean bStroke = false;
 
-	public void keyPressed()
-	{
+	public void keyPressed() {
+	    // turns on and off the texture listed in .mtl file
 	    if(key == 't') {
 	        if(!bTexture) {
 	            model.enableTexture();
@@ -57,9 +61,21 @@ public class testObjLoader extends PApplet {
 	        }
 	    }
 
-	    if(key == 's') {
+	    else if(key == 'm') {
+	        // turns on and off the material listed in .mtl file
+	        if(!bMaterial) {
+	            model.enableMaterial();
+	            bMaterial = true;
+	        } 
+	        else {
+	            model.disableMaterial();
+	            bMaterial = false;
+	        }
+	    }
+
+	    else if(key == 's') {
 	        if(!bStroke) {
-	            stroke(255);
+	            stroke(10, 10, 10);
 	            bStroke = true;
 	        } 
 	        else {
@@ -68,13 +84,43 @@ public class testObjLoader extends PApplet {
 	        }
 	    }
 
-	    else if(key=='1')
+	    // the follwing changes the render modes
+	    // POINTS mode is a little flakey in OPENGL (known processing bug)
+	    // the best one to use is the one you exported the obj as
+	    // when in doubt try TRIANGLES or POLYGON
+	    else if(key=='1') {
+	        stroke(10, 10, 10);
+	        bStroke = true;
 	        model.shapeMode(POINTS);
-	    else if(key=='2')
+	    }
+
+	    else if(key=='2') {
+	        stroke(10, 10, 10);
+	        bStroke = true;
 	        model.shapeMode(LINES);
-	    else if(key=='3')
+	    }
+
+	    else if(key=='3') {
 	        model.shapeMode(TRIANGLES);
+	    }
+
+	    else if(key=='4') {
+	        model.shapeMode(POLYGON);
+	    }
+
+	    else if(key=='5') {
+	        model.shapeMode(TRIANGLE_STRIP);
+	    }
+
+	    else if(key=='6') {
+	        model.shapeMode(QUADS);
+	    }
+
+	    else if(key=='7') {
+	        model.shapeMode(QUAD_STRIP);
+	    }
 	}
+
 
 	public void mouseDragged()
 	{

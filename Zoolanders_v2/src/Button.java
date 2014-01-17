@@ -1,16 +1,15 @@
-
-
-
 public class Button {
 	
+	/*
+	 * Button as a placeholder for cloth objects
+	 */
+	
 	private int width;
-	
 	private int height;
-	
 	private int posX;
-	
 	private int posY;
 	
+	// data of cloth object
 	private String path;
 	private Type type;
 	private float scale;

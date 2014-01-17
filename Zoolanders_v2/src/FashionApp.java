@@ -23,8 +23,13 @@ public class FashionApp extends PApplet {
 	long startTime;
 	UserInterface ui;
 	
-	boolean holded = false;
-	int filled = color(255,0,0);
+	boolean is_holding_button = false;
+	float time_2_hold = 2000; // in ms
+	float r_circle = 30; // radius of circle (hand)
+	float r_fill = 0;	// radius to fill circle
+	int hand_color = color(255,255,0);
+	
+	int button_color = color(255,0,0);
 	
 	// choosen, active cloths
 	Button activeShirt = null;
@@ -51,7 +56,7 @@ public class FashionApp extends PApplet {
 					if(button.getType().equals(Button.Type.RESET))
 						fill(127,127,127); // grey reset button	
 					else
-						fill(filled); // other buttons: red - no user detected || green - user found
+						fill(button_color); // other buttons: red - no user detected || green - user found
 					
 					// draw buttons
 					rect(button.getPosX(), button.getPosY(), button.getWidth(),
@@ -113,7 +118,7 @@ public class FashionApp extends PApplet {
 		soni.update();
 		background(255);
 //		imageMode(CORNER);
-		image(soni.rgbImage(), 0, 0);
+//		image(soni.rgbImage(), 0, 0);
 		//image(soni.depthImage(), 0, 0);
 		int[] userIDs = soni.getUsers();
 		
@@ -121,7 +126,7 @@ public class FashionApp extends PApplet {
 		noStroke();
 		if(userIDs.length >0){			
 			// change color of buttons to green
-			filled = color(0,255,0);		
+			button_color = color(150,150,255);		
 			
 			// load selected shirt
 			if(activeShirt != null)				
@@ -133,7 +138,7 @@ public class FashionApp extends PApplet {
 			
 			//clothesAdder.add2DHead(userIDs, "..\\images\\face.png", soni);
 		} else
-			filled = color(255,0,0); // change color of buttons to red (no user)
+			button_color = color(255,0,0); // change color of buttons to red (no user)
 		
 		// draw buttons
 		ui.draw();
@@ -141,8 +146,17 @@ public class FashionApp extends PApplet {
 		// draw ellipse around hand
 		if (handsTrackFlag) {
 			soni.convertRealWorldToProjective(handVec, handVec2D);
-			fill(255,255,0);
-			ellipse(640-handVec2D.x, handVec2D.y, 30, 30);
+			strokeWeight(4);
+			stroke(hand_color);
+			noFill();
+			ellipse(640-handVec2D.x, handVec2D.y, r_circle, r_circle);
+			
+			if(is_holding_button == true){
+				noStroke();
+				fill(hand_color);
+				ellipse(640-handVec2D.x, handVec2D.y, r_fill, r_fill);
+				
+			}
 		}
 	}
 
@@ -159,16 +173,19 @@ public class FashionApp extends PApplet {
 		
 		if (b != null) {
 			// reset timer, if hand is over different button
-			if (!b.equals(holdedButton))
+			if (!b.equals(holdedButton)){
 				startTime = System.currentTimeMillis();
-			else {
+				is_holding_button = false;
+				hand_color = color(255,255,0);
+			} else {
 				// measure time (hand over same button)
-				long holdTime = System.currentTimeMillis() - startTime;
+				long heldTime = System.currentTimeMillis() - startTime;
+				is_holding_button = true;
 
 				// after 2000ms over one button: 'active' button
-				if (holdTime >= 2000) {
-					println("2 Sekunden gehalten!!!!!!!!!");
-					holded = true;
+				if (heldTime >= time_2_hold) {
+					hand_color = color(0,255,0);
+					println(time_2_hold/1000+" Sekunden gehalten!!!!!!!!!");
 					switch (b.getType()) {
 					case SHIRT:
 						activeShirt = b;
@@ -182,7 +199,12 @@ public class FashionApp extends PApplet {
 						break;
 					}
 				}
+				else
+					r_fill = r_circle * (heldTime/time_2_hold);
 			}
+		} else {
+			is_holding_button = false;
+			hand_color = color(255,255,0);
 		}
 		holdedButton = b;
 	}

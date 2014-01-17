@@ -1,0 +1,21 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Carpet_Berber_Pattern_Gray
+Ka 0.000000 0.000000 0.000000
+Kd 0.086275 0.086275 0.086275
+Ks 0.330000 0.330000 0.330000
+map_Kd black t-shirt_nike/Carpet_Berber_Pattern_Gray.jpg
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl Carpet_Loop_Pattern1
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 1.000000 0.145098
+Ks 0.330000 0.330000 0.330000
+map_Kd black t-shirt_nike/Carpet_Loop_Pattern1.jpg
+

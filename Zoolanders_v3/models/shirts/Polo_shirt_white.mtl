@@ -1,0 +1,16 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl _auto_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.709804 0.164706 0.200000
+Ks 0.330000 0.330000 0.330000
+map_Kd Polo_shirt_white/_auto_2.jpg
+
+newmtl _auto_
+Ka 0.000000 0.000000 0.000000
+Kd 0.901961 0.945098 0.964706
+Ks 0.330000 0.330000 0.330000
+map_Kd Polo_shirt_white/_auto_.jpg
+

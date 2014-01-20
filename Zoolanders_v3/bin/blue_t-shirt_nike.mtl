@@ -1,0 +1,10 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Carpet_Loop_Pattern
+Ka 0.000000 0.000000 0.000000
+Kd 0.168627 0.396078 0.549020
+Ks 0.330000 0.330000 0.330000
+map_Kd blue_t-shirt_nike/Carpet_Loop_Pattern.jpg
+

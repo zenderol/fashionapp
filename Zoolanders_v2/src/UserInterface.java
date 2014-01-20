@@ -29,6 +29,10 @@ public abstract class UserInterface {
 		buttons.add(button);
 	}
 	
+	public void addList(List<Button> list){
+		buttons.addAll(list);
+	}
+	
 	public abstract void draw();
 
 	/**
@@ -49,13 +53,15 @@ public abstract class UserInterface {
 			}
 		}
 		return null;
-			
-
 	}
 	
 	
 	public List<Button> getButtons() {
 		return buttons;
+	}
+	
+	public void clearGUI(){
+		this.buttons.clear();
 	}
 
 	

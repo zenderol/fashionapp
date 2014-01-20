@@ -27,7 +27,7 @@ public class FashionApp extends PApplet {
 	float time_2_hold = 2000; // in ms
 	float r_circle = 30; // radius of circle (hand)
 	float r_fill = 0;	// radius to fill circle
-	int hand_color = color(255,255,0);
+	int hand_color = color(255,0,0);
 	
 	int button_color = color(255,0,0);
 	
@@ -118,7 +118,7 @@ public class FashionApp extends PApplet {
 		soni.update();
 		background(255);
 //		imageMode(CORNER);
-//		image(soni.rgbImage(), 0, 0);
+		image(soni.rgbImage(), 0, 0);
 		//image(soni.depthImage(), 0, 0);
 		int[] userIDs = soni.getUsers();
 		
@@ -176,7 +176,7 @@ public class FashionApp extends PApplet {
 			if (!b.equals(holdedButton)){
 				startTime = System.currentTimeMillis();
 				is_holding_button = false;
-				hand_color = color(255,255,0);
+				hand_color = color(255,0,0);
 			} else {
 				// measure time (hand over same button)
 				long heldTime = System.currentTimeMillis() - startTime;
@@ -204,7 +204,7 @@ public class FashionApp extends PApplet {
 			}
 		} else {
 			is_holding_button = false;
-			hand_color = color(255,255,0);
+			hand_color = color(255,0,0);
 		}
 		holdedButton = b;
 	}

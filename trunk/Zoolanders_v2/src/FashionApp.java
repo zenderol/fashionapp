@@ -1,3 +1,5 @@
+import java.util.List;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
@@ -10,6 +12,8 @@ public class FashionApp extends PApplet {
 	public PImage face;
 	public ClothesAdder clothesAdder = new ClothesAdder(this);
 	
+	PImage backgroundImg; // background image
+	
 	boolean handsTrackFlag = false;
 	PVector handVec = new PVector();
 	PVector handVec2D = new PVector();// just for drawing
@@ -18,7 +22,6 @@ public class FashionApp extends PApplet {
 	boolean isPushing, wasPushing;
 	float yourClickThreshold = 20;// set this up as you see fit for your
 									// interaction
-	
 	Button holdedButton;
 	long startTime;
 	UserInterface ui;
@@ -37,6 +40,7 @@ public class FashionApp extends PApplet {
 
 	public void setup() {
 		size(640, 480,P3D);
+		backgroundImg = loadImage("..\\images\\GUI\\background.png");
 		
 		soni = new SimpleOpenNI(this);
 		soni.enableDepth();
@@ -55,12 +59,21 @@ public class FashionApp extends PApplet {
 				for (Button button : getButtons()) {					
 					if(button.getType().equals(Button.Type.RESET))
 						fill(127,127,127); // grey reset button	
-					else
-						fill(button_color); // other buttons: red - no user detected || green - user found
+					else{
+						noFill(); // other buttons: red - no user detected || green - user found
+						stroke(0);
+					}
 					
 					// draw buttons
 					rect(button.getPosX(), button.getPosY(), button.getWidth(),
 							button.getHeight());
+					
+					// draw image of button
+					String sPreviewImagePath = button.getImgPreview();
+					if(sPreviewImagePath != null && sPreviewImagePath.length()>0){
+						PImage icon = loadImage(button.getImgPreview());
+						image(icon,button.getPosX()+(button.getWidth()-icon.width)/2,button.getPosY()+(button.getHeight()-icon.height)/2);
+					}
 				}
 			}
 		};
@@ -84,28 +97,16 @@ public class FashionApp extends PApplet {
 		smooth();
 		
 		// create buttons 'containing cloths'
-		Button a = new Button(0, 0, 100, 100);
-		a.setPath("..\\models\\shirts\\black_tshirt_nike.obj");
-		a.setType(Button.Type.SHIRT);
-		Button b = new Button(0, 150, 100, 100);
-		b.setPath("..\\models\\shirts\\Polo_shirt_white.obj");
-		b.setType(Button.Type.SHIRT);
-		b.setScale(0.35f);
-		Button c = new Button(150, 0, 100, 100);
-		c.setPath("..\\models\\pants\\pants_with_shoes.obj");
-		c.setType(Button.Type.PANTS);
-		c.setScale(0.35f);
+		List<Button> buttonList = ClothFactory.getAllShirts();
+		ui.addList(buttonList);
 		
 		// create reset button (undress)
-		Button reset = new Button(400, 0, 100, 100);
-		reset.setPath("");
+		Button reset = new Button(480, 0, 120, 40);
+//		reset.setPath("");
 		reset.setType(Button.Type.RESET);
 		reset.setScale(0.35f);
 		
 		// add buttons to gui (button list)
-		ui.add(a);
-		ui.add(b);
-		ui.add(c);
 		ui.add(reset);
 		
 //		activePants = c;
@@ -119,6 +120,9 @@ public class FashionApp extends PApplet {
 		background(255);
 //		imageMode(CORNER);
 		image(soni.rgbImage(), 0, 0);
+		pushMatrix(); // needed?
+		image(backgroundImg,0,0);
+		popMatrix(); // needed?
 		//image(soni.depthImage(), 0, 0);
 		int[] userIDs = soni.getUsers();
 		

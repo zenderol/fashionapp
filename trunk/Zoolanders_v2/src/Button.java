@@ -13,6 +13,7 @@ public class Button {
 	private String path;
 	private Type type;
 	private float scale;
+	private String imgPreview;
 	
 	public static enum Type {
 	    SHIRT, PANTS , RESET
@@ -81,6 +82,9 @@ public class Button {
 
 	public void setPath(String path) {
 		this.path = path;
+//		System.out.println(path);
+		this.imgPreview = path.substring(0, path.lastIndexOf(".")) + ".png";
+//		System.out.println(imgPreview);
 	}
 
 	public Type getType() {
@@ -102,5 +106,13 @@ public class Button {
 
 	public void setScale(float scale) {
 		this.scale = scale;
+	}
+
+	public String getImgPreview() {
+		return imgPreview;
+	}
+
+	public void setImgPreview(String imgPreview) {
+		this.imgPreview = imgPreview;
 	}
 }

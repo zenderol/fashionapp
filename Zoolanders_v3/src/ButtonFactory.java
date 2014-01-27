@@ -76,6 +76,10 @@ public class ButtonFactory {
 	public static List<Button> getAllCategories(){
 		List<Button> categories = new ArrayList<Button>();
 		
+		Button bReset = new Button(XPOS+60, 10, 40, 40);
+		bReset.setPath("..\\images\\GUI\\reset.png");
+		bReset.setType(Button.Type.RESET);
+		
 		Button a = new Button(443 ,60, 186, 60);
 		a.setCategoryName("shirts");
 		a.setImgPreview("..\\images\\GUI\\tshirts-button.png");
@@ -93,6 +97,7 @@ public class ButtonFactory {
 		d.setImgPreview("..\\images\\GUI\\skirts-button.png");
 		d.setType(Button.Type.CATEGORY);
 		
+		categories.add(bReset);
 		categories.add(a);
 		categories.add(b);
 		categories.add(c);

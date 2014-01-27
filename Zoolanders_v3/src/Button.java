@@ -35,6 +35,7 @@ public class Button {
 		this.posX = posX;
 		this.posY = posY;
 		this.scale = 1.0f;
+		this.price = -1;
 	}
 
 	public int getWidth() {
@@ -70,7 +71,7 @@ public class Button {
 	}
 	
 	protected void onClick() {
-		System.out.println(this.toString());
+		//System.out.println(this.toString());
 	}
 	
 	public boolean isClicked(float clickX, float clickY, float clickZ) {

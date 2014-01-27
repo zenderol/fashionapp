@@ -72,7 +72,7 @@ public class FashionApp extends PApplet {
 //					if (button.getType().equals(Button.Type.RESET))
 //						fill(127, 127, 127); // grey reset button
 //					else {
-						noFill(); // other buttons: red - no user detected || green - user found
+						noFill(); //other buttons: red - no user detected || green - user found
 						
 						if(activePants != null && activePants.getPath().equals(button.getPath()))
 							strokeWeight(3);

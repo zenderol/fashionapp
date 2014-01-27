@@ -1,9 +1,10 @@
+import java.util.HashMap;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
-import SimpleOpenNI.*;
-
-import saito.objloader.*;
+import saito.objloader.OBJModel;
+import SimpleOpenNI.SimpleOpenNI;
 
 public class ClothesAdder extends PApplet { // extends Papplet because
 											// loadImage() needs it
@@ -11,21 +12,39 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 	PApplet parent; // The parent PApplet that we will render ourselves onto
 	public PImage face;
 	
+	private HashMap<String, OBJModel> objCacheMap;
+	
 	// data of active cloths
-	OBJModel _Shirtmodel = null;
-	String _ShirtPath = "";
-	OBJModel _Pantsmodel = null;
-	String _PantsPath = "";
+	private OBJModel _Shirtmodel = null;
+	private String _ShirtPath = "";
+	private OBJModel _Pantsmodel = null;
+	private String _PantsPath = "";
+
+	public String get_ShirtPath() {
+		return _ShirtPath;
+	}
+
+	public String get_PantsPath() {
+		return _PantsPath;
+	}
 
 	public ClothesAdder(PApplet p) {
 		parent = p;
+		setObjCacheMap(new HashMap<String, OBJModel>());
 	}
 
 	public void add3DShirt(int[] userIDs, String modelPath, SimpleOpenNI soni, float scaling) {
 		if(_Shirtmodel == null || !_ShirtPath.equals(modelPath)){
 			_Shirtmodel = null;
 			_ShirtPath = modelPath;
-			_Shirtmodel = new OBJModel(parent, modelPath, "absolute", TRIANGLES);
+			if(objCacheMap.containsKey(modelPath)){
+				_Shirtmodel = objCacheMap.get(modelPath);
+				if(FashionApp.DEBUG) println("Load via cache: " + modelPath);
+			}
+			else {
+				_Shirtmodel = new OBJModel(parent, modelPath, "absolute", TRIANGLES);
+				objCacheMap.put(modelPath, _Pantsmodel);
+			}
 			_Shirtmodel.translateToCenter();
 		}
 		
@@ -84,7 +103,14 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 		if(_Shirtmodel == null || !_ShirtPath.equals(modelPath)){
 			_Shirtmodel = null;
 			_ShirtPath = modelPath;
-			_Shirtmodel = new OBJModel(parent, modelPath, "absolute", TRIANGLES);
+			if(objCacheMap.containsKey(modelPath)){
+				_Shirtmodel = objCacheMap.get(modelPath);
+				if(FashionApp.DEBUG) println("Load via cache: " + modelPath);
+			}
+			else {
+				_Shirtmodel = new OBJModel(parent, modelPath, "absolute", TRIANGLES);
+				objCacheMap.put(modelPath, _Pantsmodel);
+			}
 			_Shirtmodel.translateToCenter();
 		}
 		
@@ -147,7 +173,14 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 		if(_Pantsmodel == null || !_PantsPath.equals(modelPath)){
 			_Pantsmodel = null;
 			_PantsPath = modelPath;
-			_Pantsmodel = new OBJModel(parent, modelPath, "absolute", TRIANGLES);
+			if(objCacheMap.containsKey(modelPath)){
+				_Pantsmodel = objCacheMap.get(modelPath);
+				if(FashionApp.DEBUG) println("Load via cache: " + modelPath);
+			}
+			else {
+				_Pantsmodel = new OBJModel(parent, modelPath, "absolute", TRIANGLES);
+				objCacheMap.put(modelPath, _Pantsmodel);
+			}				
 			_Pantsmodel.translateToCenter();
 		}
 		
@@ -230,5 +263,17 @@ public class ClothesAdder extends PApplet { // extends Papplet because
 			}
 
 		}
+	}
+
+	public HashMap<String, OBJModel> getObjCacheMap() {
+		return objCacheMap;
+	}
+
+	public void setObjCacheMap(HashMap<String, OBJModel> objCacheMap) {
+		this.objCacheMap = objCacheMap;
+	}
+	
+	public void putObj2CacheMap(String path){
+		this.objCacheMap.put(path, new OBJModel(parent, path, "absolute", TRIANGLES));
 	}
 }
